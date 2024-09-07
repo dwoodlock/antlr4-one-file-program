@@ -38,7 +38,7 @@ find_package(ANTLR REQUIRED)
 #              DEPENDS_ANTLR SampleGrammarLexer
 #              COMPILE_FLAGS -lib ${ANTLR_SampleGrammarLexer_OUTPUT_DIR} VISITOR LISTENER)
 antlr_target(SampleGrammar Expr.g4
-            # This generated classes will be in namespace `antlrcpptest`. 
+            # The generated classes will be in namespace `antlrcpptest`. 
             # You can ommit this option if you don't want to use a namespace.
             PACKAGE antlrcpptest 
             VISITOR LISTENER)
