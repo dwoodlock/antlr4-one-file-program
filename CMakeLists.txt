@@ -38,8 +38,10 @@ find_package(ANTLR REQUIRED)
 #              DEPENDS_ANTLR SampleGrammarLexer
 #              COMPILE_FLAGS -lib ${ANTLR_SampleGrammarLexer_OUTPUT_DIR} VISITOR LISTENER)
 antlr_target(SampleGrammar Expr.g4
-             PACKAGE antlrcpptest
-             COMPILE_FLAGS -lib ${ANTLR_SampleGrammar_OUTPUT_DIR} VISITOR LISTENER)
+            # This generated classes will be in namespace `antlrcpptest`. 
+            # You can ommit this option if you don't want to use a namespace.
+            PACKAGE antlrcpptest 
+            VISITOR LISTENER)
 
 
 # include generated files in project environment
@@ -48,4 +50,5 @@ include_directories(${ANTLR_SampleGrammar_OUTPUT_DIR})
 # add generated grammar to demo binary target
 add_executable(antlr-cpp-test main.cpp
                ${ANTLR_SampleGrammar_CXX_OUTPUTS})
+
 target_link_libraries(antlr-cpp-test antlr4_static)
